@@ -1,0 +1,75 @@
+./
+├── README.md
+├── config-overrides.js
+├── list.txt
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── static
+│       └── js
+│           └── echarts.min.js
+├── src
+│   ├── App.jsx
+│   ├── api
+│   ├── assets
+│   │   ├── imgs
+│   │   │   ├── bear.png
+│   │   │   └── z-1.gif
+│   │   └── styled
+│   │       └── index.js
+│   ├── components
+│   │   ├── Icon
+│   │   │   └── index.jsx
+│   │   ├── index.js
+│   │   └── page-info
+│   │       ├── index.jsx
+│   │       └── styled.js
+│   ├── index.js
+│   ├── routers
+│   │   └── index.js
+│   ├── setupProxy.js
+│   ├── setupTests.js
+│   ├── store
+│   │   ├── base
+│   │   │   ├── actionCreaters.js
+│   │   │   ├── constants.js
+│   │   │   ├── index.js
+│   │   │   └── reducer.js
+│   │   ├── index.js
+│   │   └── reducer.js
+│   ├── utils
+│   └── views
+│       ├── 404
+│       │   ├── index.jsx
+│       │   └── styled.js
+│       ├── Layout
+│       │   ├── components
+│       │   │   ├── Aside.jsx
+│       │   │   ├── Content.jsx
+│       │   │   ├── components
+│       │   │   │   ├── Avatar.jsx
+│       │   │   │   └── styled.js
+│       │   │   └── index.js
+│       │   ├── index.jsx
+│       │   ├── store
+│       │   │   ├── actionCreaters.js
+│       │   │   ├── constants.js
+│       │   │   ├── index.js
+│       │   │   └── reducer.js
+│       │   └── styled.js
+│       ├── Login
+│       │   └── index.jsx
+│       └── pages
+│           ├── About
+│           │   └── index.jsx
+│           ├── Index
+│           │   └── index.jsx
+│           └── general
+│               ├── Button
+│               │   └── index.jsx
+│               └── Icon
+│                   └── index.jsx
+└── yarn.lock
+
+28 directories, 44 files
