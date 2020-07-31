@@ -35,6 +35,11 @@ const Aside = (props) => {
     dispatch(actionCreaters.setSelectedKeys(key))
     dispatch(actionCreaters.setOenKeys(key))
   }
+
+  const onOpenChange = (key) => {
+    dispatch(actionCreaters.onOpenChange(key))
+  }
+
   const menuShow = () => (
     <AsideWrap collapsed={collapse && !isMobile} width='208'>
       <LogoWrap>
@@ -47,7 +52,7 @@ const Aside = (props) => {
         style={{ marginTop: 20 }}
         selectedKeys={selectedKeys}
         openKeys={openKeys}
-        onOpenChange={actionCreaters.onOpenChange}
+        onOpenChange={onOpenChange}
         onClick={menuClick}
       >
         {menu.map((item) =>
