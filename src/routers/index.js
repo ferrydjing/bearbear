@@ -4,7 +4,8 @@ import {
   HomeFilled,
   AppstoreFilled,
   ExclamationCircleFilled,
-  LayoutFilled
+  LayoutFilled,
+  FormOutlined
 } from '@ant-design/icons'
 
 const Index = lazy(() =>
@@ -22,9 +23,28 @@ const Icon = lazy(() =>
   import(/*webpackChunkName: 'layout' */ '@/views/pages/general/Icon')
 )
 
-// const Table = lazy(() =>
-//   import(/*webpackChunkName: 'layout' */ '@/views/pages/Table')
-// )
+const BasicForm = lazy(() =>
+  import(
+    /*webpackChunkName: 'form-pages' */ '@/views/pages/form-pages/BasicForm'
+  )
+)
+
+const StepForm = lazy(() =>
+  import(
+    /*webpackChunkName: 'form-pages' */ '@/views/pages/form-pages/StepForm'
+  )
+)
+
+const QueryTable = lazy(() =>
+  import(
+    /*webpackChunkName: 'table-pages' */ '@/views/pages/table-page/QueryTable'
+  )
+)
+const StandardTable = lazy(() =>
+  import(
+    /*webpackChunkName: 'table-pages' */ '@/views/pages/table-page/StandardTable'
+  )
+)
 
 export const DefaultLayout = lazy(() =>
   import(/* webpackChunkName: 'index' */ '../views/Layout')
@@ -71,10 +91,50 @@ const routes = [
     ]
   },
   {
+    path: '/form-pages',
+    title: '表单页',
+    icon: <FormOutlined />,
+    subs: [
+      {
+        path: '/form-pages/basic-table',
+        exact: true,
+        name: 'BasicForm',
+        component: BasicForm,
+        title: '基础表单',
+        icon: ''
+      },
+      {
+        path: '/form-pages/step-table',
+        exact: true,
+        name: 'StepForm',
+        component: StepForm,
+        title: '分布表单',
+        icon: ''
+      }
+    ]
+  },
+  {
     path: '/tablePage',
     title: '列表页',
-    icon: <AppstoreFilled />,
-    subs: []
+    icon: <LayoutFilled />,
+    subs: [
+      {
+        path: '/tablePage/query-table',
+        exact: true,
+        name: 'QueryTable',
+        component: QueryTable,
+        title: '查询表格',
+        icon: ''
+      },
+      {
+        path: '/tablePage/standard-table',
+        exact: true,
+        name: 'StandardTable',
+        component: StandardTable,
+        title: '标准表格',
+        icon: ''
+      }
+    ]
   },
 
   {
