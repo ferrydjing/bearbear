@@ -3,7 +3,7 @@
  *
  */
 
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import { Tooltip } from 'antd'
 import {
   QuestionCircleOutlined,
