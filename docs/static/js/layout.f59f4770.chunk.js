@@ -1,2 +1,0 @@
-(this.webpackJsonpbearbear=this.webpackJsonpbearbear||[]).push([[2],{72:function(t,n,e){"use strict";e.r(n);var r=e(0),u=e.n(r);n.default=function(){return u.a.createElement("div",null,"about")}},73:function(t,n,e){"use strict";e.r(n);var r=e(0),u=e.n(r);n.default=function(){return u.a.createElement("div",null,"Button")}},74:function(t,n,e){"use strict";e.r(n);var r=e(0),u=e.n(r);n.default=function(){return u.a.createElement("div",null,"Icon")}}}]);
-//# sourceMappingURL=layout.f59f4770.chunk.js.map
