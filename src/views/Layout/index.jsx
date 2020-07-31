@@ -10,6 +10,14 @@ import * as actionCreaters from './store/actionCreaters'
 const LayoutContainer = (props) => {
   const { location } = props
   const dispatch = useDispatch()
+  let routesNew = []
+  routes.forEach((item) => {
+    if (item.subs) {
+      routesNew.push(...item.subs)
+    } else {
+      routesNew.push(item)
+    }
+  })
   const { isMobile, menu } = useSelector((state) => {
     return {
       isMobile: state.getIn(['base', 'isMobile']),
@@ -29,12 +37,12 @@ const LayoutContainer = (props) => {
       arr = []
     }
     arr = arr.map((item) => {
-      let obj = fp.find((cur) => cur.key === item, menu)
+      let obj = fp.find((cur) => cur.path === item, menu)
       if (!obj) {
         for (let i = 0; i < menu.length; i++) {
           if (menu[i].subs) {
             let cur = fp.find(
-              (cur) => cur.key.indexOf(item) !== -1,
+              (cur) => cur.path.indexOf(item) !== -1,
               menu[i].subs
             )
             if (cur) {
@@ -73,7 +81,7 @@ const LayoutContainer = (props) => {
       <Content>
         {renderBreadcrumb(location)}
         <Switch>
-          {routes.map((Item) => {
+          {routesNew.map((Item) => {
             return (
               <Route
                 key={Item.path}

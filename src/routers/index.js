@@ -1,5 +1,11 @@
 // import loadable from '@/utils/loadable'
-import { lazy } from 'react'
+import React, { lazy } from 'react'
+import {
+  HomeFilled,
+  AppstoreFilled,
+  ExclamationCircleFilled,
+  LayoutFilled
+} from '@ant-design/icons'
 
 const Index = lazy(() =>
   import(/*webpackChunkName: 'index' */ '@/views/pages/Index')
@@ -33,11 +39,52 @@ export const Login = lazy(() =>
 )
 
 const routes = [
-  { path: '/index', exact: true, name: 'Index', component: Index },
-  { path: '/about', exact: true, name: 'About', component: About },
-  { path: '/general/button', exact: true, name: 'Button', component: Button },
-  { path: '/general/icon', exact: true, name: 'Icon', component: Icon }
-  // { path: '/display/table', exact: true, name: 'Table', component: Table }
+  {
+    path: '/index',
+    exact: true,
+    name: 'Index',
+    component: Index,
+    title: '首页',
+    icon: <HomeFilled />
+  },
+  {
+    path: '/general',
+    title: '通用',
+    icon: <AppstoreFilled />,
+    subs: [
+      {
+        path: '/general/button',
+        exact: true,
+        name: 'Button',
+        component: Button,
+        title: '按钮',
+        icon: ''
+      },
+      {
+        path: '/general/icon',
+        exact: true,
+        name: 'Icon',
+        component: Icon,
+        title: '图标',
+        icon: ''
+      }
+    ]
+  },
+  {
+    path: '/tablePage',
+    title: '列表页',
+    icon: <AppstoreFilled />,
+    subs: []
+  },
+
+  {
+    path: '/about',
+    exact: true,
+    name: 'About',
+    component: About,
+    title: '关于',
+    icon: <ExclamationCircleFilled />
+  }
 ]
 
 export default routes

@@ -34,13 +34,13 @@ export const onOpenChange = (openKeys) => {
   }
 }
 
-export const renderSubMenuItem = ({ key, title, icon, subs }) => (
+export const renderSubMenuItem = ({ path: key, title, icon, subs }) => (
   <SubMenu key={key} icon={icon} title={title}>
     {subs.map((item) => renderMenuItem(item))}
   </SubMenu>
 )
 
-export const renderMenuItem = ({ key, title, icon }) => (
+export const renderMenuItem = ({ path: key, title, icon }) => (
   <Menu.Item key={key}>
     <Link to={key}>
       {icon}
