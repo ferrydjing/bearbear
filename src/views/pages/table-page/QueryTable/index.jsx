@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, shallowEqual } from 'react-redux'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, Table } from 'antd'
+import { PlusOutlined, InfoCircleFilled } from '@ant-design/icons'
 import * as Styled from './style'
+
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name'
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age'
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address'
+  }
+]
+
+const data = []
+for (let i = 0; i < 46; i++) {
+  data.push({
+    key: i,
+    name: `Edward King ${i}`,
+    age: 32,
+    address: `London, Park Lane no. ${i}`
+  })
+}
 
 const QueryTable = (props) => {
   const { isMobile } = useSelector(
@@ -10,6 +36,20 @@ const QueryTable = (props) => {
     }),
     shallowEqual
   )
+
+  const [selectedRowKeys, setSelectedRowKeys] = useState([])
+
+  const onSelectChange = (selectedRowKeys) => {
+    console.log('selectedRowKeys changed: ', selectedRowKeys)
+    setSelectedRowKeys(selectedRowKeys)
+  }
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange
+  }
+
+  const showTotal = (total) => `总共${total}项`
 
   return (
     <Styled.Wrap>
@@ -43,6 +83,39 @@ const QueryTable = (props) => {
           </div>
         </Form>
       </Styled.Header>
+
+      <Styled.Content>
+        <div className='header'>
+          <div className='left'>查询表格</div>
+          <div className='right'>
+            <Button type='primary' icon={<PlusOutlined />}>
+              新建
+            </Button>
+          </div>
+        </div>
+        <div className='selection'>
+          <InfoCircleFilled />
+          已选择<span className='select-item'>{selectedRowKeys.length}</span>项
+          <Button
+            type='link'
+            onClick={() => {
+              setSelectedRowKeys([])
+            }}
+          >
+            清空
+          </Button>
+        </div>
+        <Table
+          rowSelection={rowSelection}
+          columns={columns}
+          dataSource={data}
+          pagination={{
+            showSizeChanger: true,
+            showQuickJumper: true,
+            showTotal
+          }}
+        />
+      </Styled.Content>
     </Styled.Wrap>
   )
 }

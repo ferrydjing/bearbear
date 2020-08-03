@@ -51,3 +51,52 @@ export const Header = styled.header`
     }
   }
 `
+
+export const Content = styled.div`
+  margin-top: 24px;
+  padding: 12px 0%;
+  background: #fff;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    .left {
+      color: rgba(0, 0, 0, 0.75);
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+  .selection {
+    position: relative;
+    margin: 16px 0;
+    padding: 8px 15px 8px 12px;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.5715;
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    .anticon {
+      margin-right: 10px;
+      color: #1890ff;
+    }
+    .select-item {
+      margin: 0 5px;
+      color: #1890ff;
+    }
+    button {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .ant-table-wrapper {
+  }
+  .ant-pagination-item {
+    a {
+      line-height: 32px;
+    }
+  }
+`
