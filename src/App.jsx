@@ -4,6 +4,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import fp from 'lodash/fp'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import { Skeleton } from 'antd'
 import { DefaultLayout, NotFound, Login } from './routers'
 import * as actionCreaters from './store/base/actionCreaters'
 
@@ -14,7 +15,7 @@ const Loading = () => {
       NProgress.done()
     }
   }, [])
-  return <div />
+  return <Skeleton active />
 }
 
 const App = () => {
