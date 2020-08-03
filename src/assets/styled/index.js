@@ -68,4 +68,7 @@ html, body, div, span, applet, object, iframe,
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+    .loading-skeleton {
+        margin: 20px;
+    }
 `

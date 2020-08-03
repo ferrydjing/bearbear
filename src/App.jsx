@@ -8,6 +8,8 @@ import { Skeleton } from 'antd'
 import { DefaultLayout, NotFound, Login } from './routers'
 import * as actionCreaters from './store/base/actionCreaters'
 
+const { Button } = Skeleton
+
 const Loading = () => {
   useEffect(() => {
     NProgress.start()
@@ -15,7 +17,19 @@ const Loading = () => {
       NProgress.done()
     }
   }, [])
-  return <Skeleton active />
+  return (
+    <div style={{ display: 'flex' }}>
+      <Button
+        style={{ height: '100vh', width: 208, marginRigt: 20 }}
+        active
+      ></Button>
+      <Skeleton
+        active
+        paragraph={{ rows: 10 }}
+        className='loading-skeleton'
+      ></Skeleton>
+    </div>
+  )
 }
 
 const App = () => {
