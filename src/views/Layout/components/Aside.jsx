@@ -27,7 +27,7 @@ const Aside = (props) => {
       const { pathname } = location
       dispatch(actionCreaters.setOenKeys(pathname))
       dispatch(actionCreaters.setSelectedKeys(pathname))
-    }, 0)
+    }, 100)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location])
 
