@@ -97,7 +97,7 @@ const QueryTable = (props) => {
           columns={columns}
           ref={tableRef}
           checked
-          url='http://rap2.taobao.org:38080/app/mock/248654/demo-list'
+          url='https://rap2.taobao.org:38080/app/mock/248654/demo-list'
         ></FerryTable>
       </Styled.Content>
       <Modal

@@ -17,6 +17,16 @@ import { InfoCircleFilled } from '@ant-design/icons'
 import * as styled from './styled'
 import * as http from '@/api'
 
+const dataDeafaul = []
+for (let i = 0; i < 46; i++) {
+  dataDeafaul.push({
+    key: i,
+    name: `Edward King ${i}`,
+    age: 32,
+    address: `London, Park Lane no. ${i}`
+  })
+}
+
 const FerryTable = (props, ref) => {
   const { checked, url } = props
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
@@ -56,6 +66,11 @@ const FerryTable = (props, ref) => {
       setData(res)
     } catch (error) {
       setLoading(false)
+      setData({
+        ...query,
+        count: dataDeafaul.length,
+        list: dataDeafaul
+      })
     }
   }
 
