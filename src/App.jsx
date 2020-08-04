@@ -11,6 +11,12 @@ import * as actionCreaters from './store/base/actionCreaters'
 const { Button } = Skeleton
 
 const Loading = () => {
+  const { isMobile } = useSelector(
+    (state) => ({
+      isMobile: state.getIn(['base', 'isMobile'])
+    }),
+    shallowEqual
+  )
   useEffect(() => {
     NProgress.start()
     return () => {
@@ -19,10 +25,12 @@ const Loading = () => {
   }, [])
   return (
     <div style={{ display: 'flex' }}>
-      <Button
-        style={{ height: '100vh', width: 208, marginRigt: 20 }}
-        active
-      ></Button>
+      {isMobile ? null : (
+        <Button
+          style={{ height: '100vh', width: 208, marginRigt: 20 }}
+          active
+        ></Button>
+      )}
       <Skeleton
         active
         paragraph={{ rows: 10 }}

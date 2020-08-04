@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, shallowEqual } from 'react-redux'
-import { Form, Input, Button, Table } from 'antd'
-import { PlusOutlined, InfoCircleFilled } from '@ant-design/icons'
+import { Form, Input, Button } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
+import { FerryTable } from '_c'
 import * as Styled from './style'
 
 const columns = [
   {
-    title: 'Name',
+    title: '姓名',
     dataIndex: 'name'
   },
   {
-    title: 'Age',
+    title: '年龄',
     dataIndex: 'age'
   },
   {
-    title: 'Address',
+    title: '地址',
     dataIndex: 'address'
   }
 ]
@@ -36,20 +37,6 @@ const QueryTable = (props) => {
     }),
     shallowEqual
   )
-
-  const [selectedRowKeys, setSelectedRowKeys] = useState([])
-
-  const onSelectChange = (selectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys)
-    setSelectedRowKeys(selectedRowKeys)
-  }
-
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange
-  }
-
-  const showTotal = (total) => `总共${total}项`
 
   return (
     <Styled.Wrap>
@@ -93,28 +80,11 @@ const QueryTable = (props) => {
             </Button>
           </div>
         </div>
-        <div className='selection'>
-          <InfoCircleFilled />
-          已选择<span className='select-item'>{selectedRowKeys.length}</span>项
-          <Button
-            type='link'
-            onClick={() => {
-              setSelectedRowKeys([])
-            }}
-          >
-            清空
-          </Button>
-        </div>
-        <Table
-          rowSelection={rowSelection}
+
+        <FerryTable
           columns={columns}
-          dataSource={data}
-          pagination={{
-            showSizeChanger: true,
-            showQuickJumper: true,
-            showTotal
-          }}
-        />
+          url='http://rap2.taobao.org:38080/app/mock/248654/demo-list'
+        ></FerryTable>
       </Styled.Content>
     </Styled.Wrap>
   )
