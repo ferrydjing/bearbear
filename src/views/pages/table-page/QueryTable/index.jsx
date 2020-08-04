@@ -29,7 +29,7 @@ const QueryTable = (props) => {
     shallowEqual
   )
 
-  const [title, setTile] = useState('新增')
+  const [title] = useState('新增')
   const [visible, setVisible] = useState(false)
 
   const tableRef = useRef(null)
@@ -109,15 +109,17 @@ const QueryTable = (props) => {
           setVisible(false)
         }}
       >
-        <TableForm
-          onCancel={() => {
-            setVisible(false)
-          }}
-          onConfirm={() => {
-            setVisible(false)
-            tableRef.current.refresh()
-          }}
-        ></TableForm>
+        {visible ? (
+          <TableForm
+            onCancel={() => {
+              setVisible(false)
+            }}
+            onConfirm={() => {
+              setVisible(false)
+              tableRef.current.refresh()
+            }}
+          ></TableForm>
+        ) : null}
       </Modal>
     </Styled.Wrap>
   )

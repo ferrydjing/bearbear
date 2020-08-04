@@ -47,12 +47,16 @@ const FerryTable = (props, ref) => {
 
   const fetchData = async (options = {}) => {
     setLoading(true)
-    const res = await http.get({
-      url,
-      data: options.data || query
-    })
-    setLoading(false)
-    setData(res)
+    try {
+      const res = await http.get({
+        url,
+        data: options.data || query
+      })
+      setLoading(false)
+      setData(res)
+    } catch (error) {
+      setLoading(false)
+    }
   }
 
   const onTableChange = (pagination, filters, sorter, extra) => {
