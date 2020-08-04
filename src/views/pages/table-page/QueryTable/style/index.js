@@ -66,6 +66,13 @@ export const Content = styled.div`
       font-weight: 500;
       font-size: 16px;
     }
+    .right {
+      button {
+        &:not(:first-child) {
+          margin-left: 10px;
+        }
+      }
+    }
   }
   .selection {
     position: relative;

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useSelector, shallowEqual } from 'react-redux'
-import { Form, Input, Button } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import { Form, Input, Button, Modal } from 'antd'
+import { PlusOutlined, RedoOutlined } from '@ant-design/icons'
 import { FerryTable } from '_c'
 import * as Styled from './style'
+import TableForm from './components/TableForm'
 
 const columns = [
   {
@@ -20,16 +21,6 @@ const columns = [
   }
 ]
 
-const data = []
-for (let i = 0; i < 46; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`
-  })
-}
-
 const QueryTable = (props) => {
   const { isMobile } = useSelector(
     (state) => ({
@@ -37,6 +28,13 @@ const QueryTable = (props) => {
     }),
     shallowEqual
   )
+
+  const [title, setTile] = useState('新增')
+  const [visible, setVisible] = useState(false)
+
+  const tableRef = useRef(null)
+
+  useEffect(() => {}, [])
 
   return (
     <Styled.Wrap>
@@ -70,22 +68,57 @@ const QueryTable = (props) => {
           </div>
         </Form>
       </Styled.Header>
-
       <Styled.Content>
         <div className='header'>
           <div className='left'>查询表格</div>
           <div className='right'>
-            <Button type='primary' icon={<PlusOutlined />}>
+            <Button
+              type='primary'
+              icon={<PlusOutlined />}
+              onClick={() => {
+                setVisible(true)
+              }}
+            >
               新建
+            </Button>
+            <Button
+              type='primary'
+              icon={<RedoOutlined />}
+              onClick={() => {
+                tableRef.current.refresh()
+              }}
+            >
+              刷新
             </Button>
           </div>
         </div>
 
         <FerryTable
           columns={columns}
+          ref={tableRef}
+          checked
           url='http://rap2.taobao.org:38080/app/mock/248654/demo-list'
         ></FerryTable>
       </Styled.Content>
+      <Modal
+        title={title}
+        visible={visible}
+        footer={null}
+        width={750}
+        onCancel={() => {
+          setVisible(false)
+        }}
+      >
+        <TableForm
+          onCancel={() => {
+            setVisible(false)
+          }}
+          onConfirm={() => {
+            setVisible(false)
+            tableRef.current.refresh()
+          }}
+        ></TableForm>
+      </Modal>
     </Styled.Wrap>
   )
 }

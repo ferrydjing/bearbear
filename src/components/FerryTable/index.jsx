@@ -1,10 +1,23 @@
-import React, { useState, useEffect } from 'react'
+/**
+ * @desc 对antd table进行二次封装
+ * @props
+ *    @checked    是否可选
+ *    @url        接口请求地址
+ *    @columns    列
+ */
+
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle
+} from 'react'
 import { Table, Button } from 'antd'
 import { InfoCircleFilled } from '@ant-design/icons'
 import * as styled from './styled'
 import * as http from '@/api'
 
-const FerryTable = (props) => {
+const FerryTable = (props, ref) => {
   const { checked, url } = props
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
   const [data, setData] = useState({
@@ -32,11 +45,6 @@ const FerryTable = (props) => {
 
   const showTotal = (total) => `总共${total}项`
 
-  useEffect(() => {
-    fetchData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const fetchData = async (options = {}) => {
     setLoading(true)
     const res = await http.get({
@@ -57,12 +65,16 @@ const FerryTable = (props) => {
       }
       setQuery(obj)
     }
-    setTimeout(() => {
-      fetchData({
-        data: obj
-      })
-    }, 0)
   }
+
+  useEffect(() => {
+    fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query])
+
+  useImperativeHandle(ref, () => ({
+    refresh: fetchData
+  }))
 
   return (
     <styled.Wrap>
@@ -100,4 +112,4 @@ const FerryTable = (props) => {
   )
 }
 
-export default FerryTable
+export default forwardRef(FerryTable)
