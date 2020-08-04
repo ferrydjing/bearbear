@@ -1,2 +1,0 @@
-(this.webpackJsonpbearbear=this.webpackJsonpbearbear||[]).push([[5],{198:function(e,n,t){"use strict";t.r(n);var a=t(0),r=t.n(a);n.default=Object(a.memo)((function(e){return r.a.createElement("div",null,"login")}))}}]);
-//# sourceMappingURL=login.0fe7719e.chunk.js.map
