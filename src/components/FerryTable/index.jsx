@@ -30,6 +30,7 @@ for (let i = 0; i < 46; i++) {
 const FerryTable = (props, ref) => {
   const { checked, url } = props
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
+  const [selectTotalKeys, setSelectTotalKeys] = useState({})
   const [data, setData] = useState({
     count: 0,
     page: 1,
@@ -41,9 +42,19 @@ const FerryTable = (props, ref) => {
     page: 1
   })
 
-  const onSelectChange = (selectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys)
-    setSelectedRowKeys(selectedRowKeys)
+  const onSelectChange = (currSelectedRowKeys, selectedRow) => {
+    if (
+      currSelectedRowKeys.length > query.row ||
+      data.list.length > query.row
+    ) {
+      setSelectedRowKeys(currSelectedRowKeys)
+    } else {
+      setSelectTotalKeys({
+        ...selectTotalKeys,
+        [query.page]: currSelectedRowKeys
+      })
+    }
+    // setSelectedRowKeys(currSelectedRowKeys)
   }
 
   const rowSelection = checked
@@ -64,6 +75,19 @@ const FerryTable = (props, ref) => {
       })
       setLoading(false)
       setData(res)
+      if (selectTotalKeys[query.page]) {
+        let curRow = selectTotalKeys[query.page]
+        let arr = []
+        res.list.forEach((item) => {
+          if (curRow.indexOf(item.id) !== -1) {
+            arr.push(item.id)
+          }
+        })
+        setSelectTotalKeys({
+          ...selectTotalKeys,
+          [query.page]: [...arr]
+        })
+      }
     } catch (error) {
       setLoading(false)
       setData({
@@ -90,6 +114,17 @@ const FerryTable = (props, ref) => {
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
+
+  useEffect(() => {
+    let arr = []
+    for (let i in selectTotalKeys) {
+      for (let j = 0; j < selectTotalKeys[i].length; j++) {
+        arr.push(selectTotalKeys[i][j])
+      }
+    }
+    setSelectedRowKeys(arr)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectTotalKeys])
 
   useImperativeHandle(ref, () => ({
     refresh: fetchData
