@@ -1,1 +1,0 @@
-(this.webpackJsonpbearbear=this.webpackJsonpbearbear||[]).push([[5],{604:function(e,n,t){"use strict";t.r(n);var a=t(0),r=t.n(a);n.default=Object(a.memo)((function(e){return r.a.createElement("div",null,"login")}))}}]);
