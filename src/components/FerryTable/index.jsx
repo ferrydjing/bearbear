@@ -99,7 +99,8 @@ const FerryTable = (props, ref) => {
   }
 
   const onTableChange = (pagination, filters, sorter, extra) => {
-    console.log(pagination, filters, sorter, extra)
+    // eslint-disable-next-line no-undef
+    _ferrydjing.log(pagination, filters, sorter, extra)
     let obj = {}
     if (extra.action === 'paginate') {
       obj = {

@@ -14,7 +14,8 @@ const TableForm = (props) => {
 
   const save = async (values) => {
     setLoading(true)
-    console.log(values)
+    // eslint-disable-next-line no-undef
+    _ferrydjing.log(values)
     setTimeout(() => {
       setLoading(false)
       setStatus(1)

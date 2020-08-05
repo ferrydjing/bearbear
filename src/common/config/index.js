@@ -1,6 +1,7 @@
+import _ferrydjing from '../libs'
 let env = process.env
 let url = ''
-console.log(env)
+_ferrydjing.log(env)
 if (env.REACT_APP_MODE === 'test') {
   // 测试服
   url = '/api'

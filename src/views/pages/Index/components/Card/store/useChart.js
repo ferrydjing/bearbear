@@ -5,7 +5,8 @@ const useChart = () => {
   const [myChart, setMyChart] = useState(null)
 
   const chartInit = (val, option) => {
-    console.log(val, option)
+    // eslint-disable-next-line no-undef
+    _ferrydjing.log(val, option)
     val.setOption(option)
     setMyChart(val)
   }
