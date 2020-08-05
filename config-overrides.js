@@ -6,6 +6,14 @@ function resolve(dir) {
   return path.join(__dirname, '.', dir)
 }
 
+const addCustomize = () => (config) => {
+  if (process.env.NODE_ENV === 'production') {
+    // 关闭sourceMap
+    config.devtool = false
+  }
+  return config
+}
+
 module.exports = override(
   addWebpackAlias({
     '@': resolve('src'),
@@ -14,5 +22,6 @@ module.exports = override(
   fixBabelImports('import', {
     libraryName: 'antd',
     style: 'css'
-  })
+  }),
+  addCustomize()
 )
