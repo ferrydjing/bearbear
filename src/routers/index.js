@@ -114,12 +114,12 @@ const routes = [
     ]
   },
   {
-    path: '/tablePage',
+    path: '/table-pages',
     title: '列表页',
     icon: <LayoutFilled />,
     subs: [
       {
-        path: '/tablePage/query-table',
+        path: '/table-pages/query-table',
         exact: true,
         name: 'QueryTable',
         component: QueryTable,
@@ -127,7 +127,7 @@ const routes = [
         icon: ''
       },
       {
-        path: '/tablePage/standard-table',
+        path: '/table-pages/standard-table',
         exact: true,
         name: 'StandardTable',
         component: StandardTable,

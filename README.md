@@ -63,7 +63,7 @@ css 样式基于 styled components 组件实现
 ```shell
 git clone https://github.com/ferrydjing/bearbear.git
 
-cd react-backstage
+cd bearbear
 
 // 安装依赖
 npm install // yarn
