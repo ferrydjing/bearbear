@@ -12,6 +12,7 @@ import React, {
   forwardRef,
   useImperativeHandle
 } from 'react'
+import { log } from '@ferrydjing/utils'
 import { Table, Button } from 'antd'
 import { InfoCircleFilled } from '@ant-design/icons'
 import * as styled from './styled'
@@ -99,8 +100,7 @@ const FerryTable = (props, ref) => {
   }
 
   const onTableChange = (pagination, filters, sorter, extra) => {
-    // eslint-disable-next-line no-undef
-    _ferrydjing.log(pagination, filters, sorter, extra)
+    log(pagination, filters, sorter, extra)
     let obj = {}
     if (extra.action === 'paginate') {
       obj = {

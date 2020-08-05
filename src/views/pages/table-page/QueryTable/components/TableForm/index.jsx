@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { log } from '@ferrydjing/utils'
 import { Form, Button, Input, Spin, notification } from 'antd'
 
 const layout = {
@@ -14,8 +15,7 @@ const TableForm = (props) => {
 
   const save = async (values) => {
     setLoading(true)
-    // eslint-disable-next-line no-undef
-    _ferrydjing.log(values)
+    log(values)
     setTimeout(() => {
       setLoading(false)
       setStatus(1)
