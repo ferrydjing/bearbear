@@ -71,4 +71,9 @@ html, body, div, span, applet, object, iframe,
     .loading-skeleton {
         margin: 20px;
     }
+    .ant-pagination-item {
+        a {
+        line-height: 32px;
+        }
+    }
 `
