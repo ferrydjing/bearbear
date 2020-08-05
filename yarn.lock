@@ -1186,14 +1186,15 @@
   resolved "https://registry.npm.taobao.org/@emotion/unitless/download/@emotion/unitless-0.7.5.tgz?cache=0&sync_timestamp=1577058305434&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40emotion%2Funitless%2Fdownload%2F%40emotion%2Funitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha1-dyESkcGQCnALinjPr9oxYNdpSe0=
 
-"@ferrydjing/utils@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@ferrydjing/utils/-/utils-0.0.4.tgz#d9fabaf43ac3f0a53e00b4df9db089fb5b42787a"
-  integrity sha512-rJ7jNsMlqHUy0zSYXNY/Sh35PJv+MFEtVbcdr9ePjPsRbHroOdy5ClcjmPC6ra/+XRkTm9Lu8ob+C6Y/NSOP+A==
+"@ferrydjing/utils@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@ferrydjing/utils/-/utils-0.0.7.tgz#840009ea9c54176b4d7815d5c976c19ae6d55cfb"
+  integrity sha512-CXNTlINL2tPSDoliq57KfQLDwXTwWegwv6Ue9QOBJZU1s0uki2DgzVm/m1Z0k8eqJdyUnBbQD+HZximw84Y7Dw==
   dependencies:
     "@babel/runtime" "^7.11.1"
     "@babel/runtime-corejs3" "^7.11.1"
     core-js "^3.6.5"
+    js-calculation "^2.0.5"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -6478,6 +6479,11 @@ jest@24.9.0:
   dependencies:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
+
+js-calculation@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/js-calculation/-/js-calculation-2.0.5.tgz#0ab9d0324d70d3f8a0c20ed3f34f30ffc271c8ec"
+  integrity sha512-IQpbjAqRd1UMHfF/J6EO10GJWHf9zA35+j6h034x9eEgklvh1h85gZ7T3Oh8yVZ/mjok7qpPxX83yQ91M8RGGQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
