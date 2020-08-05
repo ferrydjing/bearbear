@@ -28,7 +28,7 @@ const StandardTable = (props) => {
     <Styled.Wrap>
       <Styled.Content>
         <div className='header'>
-          <div className='left'>查询表格</div>
+          <div className='left'>标准表格</div>
           <div className='right'>
             <Input placeholder='请输入'></Input>
           </div>
