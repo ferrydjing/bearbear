@@ -19,11 +19,16 @@ export const ContentWrap = styled(Layout)`
   }
 `
 
-export const HeaderWrap = styled(Header)`
+export const HeaderWrap = styled.div`
+  position: fixed;
+  right: 0;
+  left: 208px;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  z-index: 10;
+`
+
+export const HeaderContent = styled(Header)`
   &.ant-layout-header {
-    position: fixed;
-    right: 0;
-    left: 208px;
     padding: 0 24px;
     height: 48px;
     display: flex;
@@ -39,8 +44,9 @@ export const HeaderWrap = styled(Header)`
 `
 
 export const Main = styled(Content)`
-  margin-top: 48px;
-  padding: 24px 24px;
+  position: relative;
+  margin-top: 80px;
+  padding: 24px 24px 24px;
   overflow-x: hidden;
 `
 

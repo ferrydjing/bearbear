@@ -9,9 +9,11 @@ import {
   GithubFilled
 } from '@ant-design/icons'
 import Avatar from './components/Avatar'
+import { FerryTabs } from '_c'
 import {
   ContentWrap,
   HeaderWrap,
+  HeaderContent,
   Main,
   CollapsedWrap,
   GithubWrap
@@ -19,7 +21,7 @@ import {
 import * as actionCreaters from '../store/actionCreaters'
 
 const Content = (props) => {
-  const { location } = props
+  const { location, history } = props
   const { isMobile, collapse, menu } = useSelector(
     (state) => ({
       isMobile: state.getIn(['base', 'isMobile']),
@@ -82,22 +84,29 @@ const Content = (props) => {
   return (
     <ContentWrap style={{ marginLeft: isMobile ? 0 : collapse ? 80 : 208 }}>
       <HeaderWrap style={{ left: isMobile ? 0 : collapse ? 80 : 208 }}>
-        <CollapsedWrap
-          onClick={() => dispatch(actionCreaters.setCollapse(!collapse))}
-        >
-          {collapse || isMobile ? (
-            <MenuUnfoldOutlined style={{ fontSize: 22 }} />
-          ) : (
-            <MenuFoldOutlined style={{ fontSize: 22 }} />
-          )}
-        </CollapsedWrap>
-        {renderBreadcrumb(location)}
-        <GithubWrap>
-          <GithubFilled style={{ fontSize: 20, marginLeft: 'auto' }} />
-        </GithubWrap>
-        <Avatar />
+        <HeaderContent>
+          <CollapsedWrap
+            onClick={() => dispatch(actionCreaters.setCollapse(!collapse))}
+          >
+            {collapse || isMobile ? (
+              <MenuUnfoldOutlined style={{ fontSize: 22 }} />
+            ) : (
+              <MenuFoldOutlined style={{ fontSize: 22 }} />
+            )}
+          </CollapsedWrap>
+          {renderBreadcrumb(location)}
+          <GithubWrap>
+            <GithubFilled style={{ fontSize: 20, marginLeft: 'auto' }} />
+          </GithubWrap>
+          <Avatar />
+        </HeaderContent>
+        <FerryTabs history={history}></FerryTabs>
       </HeaderWrap>
-      <Main style={{ padding: pathname === '/index' ? '24px 12px' : 24 }}>
+      <Main
+        style={{
+          padding: pathname === '/index' ? '24px 12px' : 24
+        }}
+      >
         {props.children}
       </Main>
     </ContentWrap>

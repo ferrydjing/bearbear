@@ -1,11 +1,14 @@
-import React, { memo } from 'react'
-import { useSelector, shallowEqual } from 'react-redux'
+import React, { memo, useEffect } from 'react'
+import { useSelector, shallowEqual, useDispatch } from 'react-redux'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import { Layout, BackTop } from 'antd'
 import { Aside, Content } from './components'
 import routes from '@/routers'
+import * as baseActionCreaters from '@/store/base/actionCreaters'
 
 const LayoutContainer = (props) => {
+  const { location } = props
+  const dispatch = useDispatch()
   let routesNew = []
   routes.forEach((item) => {
     if (item.subs) {
@@ -19,6 +22,11 @@ const LayoutContainer = (props) => {
       isMobile: state.getIn(['base', 'isMobile'])
     }
   }, shallowEqual)
+
+  useEffect(() => {
+    dispatch(baseActionCreaters.setMenuTabsPanes(location.pathname))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location])
 
   return (
     <Layout style={{ overflow: 'hidden' }}>
