@@ -42,17 +42,17 @@ export const setMenuTabsPanes = (key) => {
   return (dispatch, getState) => {
     const state = getState()
     const panes = state.getIn(['base', 'panes']).toJS()
-    let item = fp.find((item) => item.path === key, routesNew) || {}
+    let item = fp.find((item) => item.path === key, routesNew)
     if (item) {
       item = {
         title: item.title,
         key: item.path
       }
+      let newPanes = fp.flowRight(fp.uniqBy('key'), (arr) => [...arr, item])(
+        panes
+      )
+      dispatch(setTabsPanes(newPanes))
+      dispatch(setMenuActive(key))
     }
-    let newPanes = fp.flowRight(fp.uniqBy('key'), (arr) => [...arr, item])(
-      panes
-    )
-    dispatch(setTabsPanes(newPanes))
-    dispatch(setMenuActive(key))
   }
 }
