@@ -1,11 +1,9 @@
 import React from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
-import { Tabs } from 'antd'
 import fp from 'lodash/fp'
+import { CloseOutlined } from '@ant-design/icons'
 import * as Styled from './style'
 import * as baseActionCreaters from '@/store/base/actionCreaters'
-
-const { TabPane } = Tabs
 
 const FerryTabs = (props) => {
   const { history } = props
@@ -17,13 +15,14 @@ const FerryTabs = (props) => {
     }),
     shallowEqual
   )
-  const onChange = (avtiveKey) => {}
-  const onEdit = (targetKey, action) => {
-    if (action === 'remove') {
-      if (menuActive !== targetKey) {
-        let arr = fp.filter((item) => item.key !== targetKey, panes)
-        dispatch(baseActionCreaters.setTabsPanes(arr))
-      }
+  const onRemove = (targetKey) => {
+    if (menuActive !== targetKey) {
+      let arr = fp.filter((item) => item.key !== targetKey, panes)
+      dispatch(baseActionCreaters.setTabsPanes(arr))
+    } else {
+      let arr = fp.filter((item) => item.key !== targetKey, panes)
+      dispatch(baseActionCreaters.setTabsPanes(arr))
+      history.push(arr[arr.length - 1].key)
     }
   }
   const onTabClick = (key) => {
@@ -34,20 +33,29 @@ const FerryTabs = (props) => {
 
   return (
     <Styled.Wrap>
-      <Tabs
-        hideAdd
-        onChange={onChange}
-        activeKey={menuActive}
-        type='editable-card'
-        onEdit={onEdit}
-        onTabClick={onTabClick}
-      >
-        {panes.map((pane) => (
-          <TabPane tab={pane.title} key={pane.key}>
-            {pane.content}
-          </TabPane>
-        ))}
-      </Tabs>
+      <div className='scroll'>
+        {panes.map((item) => {
+          return (
+            <div
+              className={`item ${item.key === menuActive ? 'active' : ''}`}
+              key={item.key}
+              onClick={() => {
+                onTabClick(item.key)
+              }}
+            >
+              {item.title}{' '}
+              {item.key !== '/index' ? (
+                <CloseOutlined
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    onRemove(item.key)
+                  }}
+                />
+              ) : null}
+            </div>
+          )
+        })}
+      </div>
     </Styled.Wrap>
   )
 }
