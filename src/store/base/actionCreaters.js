@@ -1,4 +1,5 @@
 import fp from 'lodash/fp'
+import { store } from '@ferrydjing/utils'
 import { fromJS } from 'immutable'
 import * as constants from './constants'
 import routes from '@/routers'
@@ -52,6 +53,7 @@ export const setMenuTabsPanes = (key) => {
         panes
       )
       dispatch(setTabsPanes(newPanes))
+      store.session.set('_tabsViews', newPanes)
       dispatch(setMenuActive(key))
     }
   }

@@ -4,6 +4,7 @@ import history from '@/common/history'
 import { message as Message } from 'antd'
 import qs from 'qs'
 import fp from 'lodash/fp'
+import { store } from '@ferrydjing/utils'
 
 export default function (options) {
   return new Promise((resolve, reject) => {
@@ -15,9 +16,9 @@ export default function (options) {
         // 'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
-    if (sessionStorage.getItem('accessToken')) {
+    if (store.session.get('accessToken')) {
       createOption.headers['Authorization'] =
-        'Bearer ' + sessionStorage.getItem('accessToken')
+        'Bearer ' + store.session.get('accessToken')
     }
 
     if (

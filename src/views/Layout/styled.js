@@ -45,7 +45,7 @@ export const HeaderContent = styled(Header)`
 
 export const Main = styled(Content)`
   position: relative;
-  margin-top: 80px;
+  margin-top: 84px;
   padding: 24px 24px 24px;
   overflow-x: hidden;
 `

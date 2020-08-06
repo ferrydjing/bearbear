@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Wrap = styled.div`
   position: relative;
   padding: 0 24px;
-  height: 32px;
+  height: 36px;
   background: #fff;
   overflow: hidden;
   &::before {

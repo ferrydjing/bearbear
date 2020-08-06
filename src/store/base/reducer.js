@@ -1,16 +1,26 @@
 import { fromJS } from 'immutable'
+import { log, store } from '@ferrydjing/utils'
 import * as constants from './constants'
+
+let panes = [
+  {
+    key: '/index',
+    title: '首页'
+  }
+]
+try {
+  if (store.session.get('_tabsViews')) {
+    panes = store.session.get('_tabsViews')
+  }
+} catch (error) {
+  log(error)
+}
 
 const defaultObj = {
   isMobile: false,
   screenWidth: 0,
   screenHeight: 0,
-  panes: [
-    {
-      key: '/index',
-      title: '首页'
-    }
-  ],
+  panes,
   menuActive: '/index'
 }
 

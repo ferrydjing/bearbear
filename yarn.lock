@@ -1186,10 +1186,10 @@
   resolved "https://registry.npm.taobao.org/@emotion/unitless/download/@emotion/unitless-0.7.5.tgz?cache=0&sync_timestamp=1577058305434&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40emotion%2Funitless%2Fdownload%2F%40emotion%2Funitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha1-dyESkcGQCnALinjPr9oxYNdpSe0=
 
-"@ferrydjing/utils@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@ferrydjing/utils/-/utils-0.0.7.tgz#840009ea9c54176b4d7815d5c976c19ae6d55cfb"
-  integrity sha512-CXNTlINL2tPSDoliq57KfQLDwXTwWegwv6Ue9QOBJZU1s0uki2DgzVm/m1Z0k8eqJdyUnBbQD+HZximw84Y7Dw==
+"@ferrydjing/utils@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@ferrydjing/utils/-/utils-0.0.10.tgz#4cf0d03e137e4b9a4988cc623484d07a2f3e5480"
+  integrity sha512-SPdxWTDvBuVfCFPwTWxsdm0khmVKVXCe21MpK8KfPwEvTxU81OdVdw4KlfQTYkYlb0/LTBKRaXc3ZQ9oDzeNPA==
   dependencies:
     "@babel/runtime" "^7.11.1"
     "@babel/runtime-corejs3" "^7.11.1"
