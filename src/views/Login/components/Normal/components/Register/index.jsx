@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Form, Button, Input, notification, Checkbox, Modal } from 'antd'
 import { log } from '@ferrydjing/utils'
-import UserAgreement from './components/UserAgreement'
+import { UserAgreement } from '_c'
 import * as Styled from './style'
 
 const Register = (props) => {
@@ -115,16 +115,8 @@ const Register = (props) => {
           </Button>
         </Form.Item>
       </Form>
-      <Modal
-        visible={visible}
-        footer={null}
-        width={750}
-        onCancel={() => {
-          setVisible(false)
-        }}
-      >
-        <UserAgreement />
-      </Modal>
+
+      <UserAgreement visible={visible} setVisible={setVisible} />
     </Styled.Wrap>
   )
 }
