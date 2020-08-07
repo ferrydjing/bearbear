@@ -23,6 +23,7 @@ export const Header = styled.div`
 
 export const Content = styled.div`
   padding: 24px 0;
+  min-height: 400px;
   p {
     line-height: 1.5;
   }

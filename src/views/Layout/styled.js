@@ -77,3 +77,8 @@ export const DrawerWrap = styled(Drawer)`
     padding: 0;
   }
 `
+
+export const Footer = styled.footer`
+  margin-top: 24px;
+  text-align: center;
+`

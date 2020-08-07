@@ -3,6 +3,7 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { Breadcrumb } from 'antd'
 import fp from 'lodash/fp'
+import dayjs from 'dayjs'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -16,7 +17,8 @@ import {
   HeaderContent,
   Main,
   CollapsedWrap,
-  GithubWrap
+  GithubWrap,
+  Footer
 } from '../styled'
 import * as actionCreaters from '../store/actionCreaters'
 
@@ -108,6 +110,9 @@ const Content = (props) => {
         }}
       >
         {props.children}
+        <Footer>
+          BearBear ©{dayjs().format('YYYY')} Created by ferrydjing@outlook.com
+        </Footer>
       </Main>
     </ContentWrap>
   )
