@@ -17,7 +17,7 @@ const MyAvartar = () => {
   return (
     <AvatarWrap overlay={menu} width={{ width: 120 }}>
       <DropdownWrap>
-        <span style={{ marginRight: 10 }}>sadasdsa</span>
+        <span style={{ marginRight: 10 }}>BearBear</span>
         <Avatar
           icon={<UserOutlined />}
           src='https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png'

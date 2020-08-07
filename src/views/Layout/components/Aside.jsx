@@ -44,7 +44,7 @@ const Aside = (props) => {
     <AsideWrap collapsed={collapse && !isMobile} width='208'>
       <LogoWrap>
         <Icon style={{ fontSize: 32, color: '#fff' }} type='bear' />{' '}
-        {collapse && !isMobile ? '' : <span>bearbear</span>}
+        {collapse && !isMobile ? '' : <span>BearBear</span>}
       </LogoWrap>
       <Menu
         theme='dark'
