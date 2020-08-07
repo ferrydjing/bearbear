@@ -16,12 +16,26 @@ export const IconItem = styled.div`
       display: inline-block;
       vertical-align: top;
       padding: 10px 0 0;
-      width: 16.6%;
       height: 100px;
       text-align: center;
       font-size: 14px;
       box-sizing: border-box;
       border-radius: 4px;
+      @media only screen and (min-width: 360px) {
+        width: 50%;
+      }
+      @media only screen and (min-width: 560px) {
+        width: 33.33%;
+      }
+      @media only screen and (min-width: 900px) {
+        width: 25%;
+      }
+      @media only screen and (min-width: 1000px) {
+        width: 20%;
+      }
+      @media only screen and (min-width: 1600px) {
+        width: 16.6%;
+      }
       &:hover {
         color: #fff;
         background: #1890ff;
