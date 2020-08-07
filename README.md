@@ -79,3 +79,16 @@ npm run build // yarn build
 npm run build:test // yarn build:test
 
 ```
+
+### store 说明
+
+使用`redux`和`react-redux`进行状态管理。本项目会在`src/store`目录合并各个 store.每个组件有各自的 store
+
+```js
+//目录说明
+├── store
+│   │   ├── actionCreaters.js                # store对应的操作方法
+│   │   ├── constants.js                     # reducer常量
+│   │   ├── index.js
+│   │   └── reducer.js                       # reducer目录
+```
