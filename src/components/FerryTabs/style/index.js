@@ -30,17 +30,17 @@ export const Wrap = styled.div`
       font-size: 12px;
       border: 1px solid;
       border-radius: 4px;
-      color: rgb(250, 173, 20);
-      background: rgb(255, 251, 230);
-      border-color: rgb(255, 229, 143);
+      color: #999;
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #ddd;
       cursor: pointer;
       &:not(:first-child) {
         margin-left: 10px;
       }
       &.active {
-        color: rgb(47, 84, 235);
-        background: rgb(240, 245, 255);
-        border-color: rgb(173, 198, 255);
+        color: rgba(24, 144, 255, 1);
+        background: #e6f7ff;
+        border-color: rgba(24, 144, 255, 1);
       }
       .anticon {
         margin-left: 5px;
