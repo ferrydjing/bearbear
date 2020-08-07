@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Form, Button, Input, notification, Checkbox, Modal } from 'antd'
+import { Form, Button, Input, notification, Checkbox } from 'antd'
 import { log } from '@ferrydjing/utils'
 import { UserAgreement } from '_c'
 import * as Styled from './style'

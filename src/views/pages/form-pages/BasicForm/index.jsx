@@ -7,7 +7,6 @@ import {
   Checkbox,
   Select,
   Spin,
-  message,
   notification
 } from 'antd'
 import { log } from '@ferrydjing/utils'
@@ -66,6 +65,26 @@ const rules = {
     }
   ]
 }
+
+const hobbyList = [
+  {
+    txt: '篮球',
+    value: 'backetball'
+  },
+  {
+    txt: '足球',
+    value: 'football'
+  },
+  {
+    txt: '写作',
+    value: 'writting'
+  },
+  {
+    txt: '阅读',
+    value: 'reading'
+  }
+]
+
 const BasicForm = (props) => {
   const [loading, setLoading] = useState(false)
   const [visible, setVisible] = useState(false)
@@ -102,16 +121,35 @@ const BasicForm = (props) => {
             <Input placeholder='请输入邮箱' />
           </Form.Item>
           <Form.Item label='密码' name='password' rules={rules.password}>
-            <Input placeholder='请输入密码' />
+            <Input.Password placeholder='请输入密码' />
           </Form.Item>
           <Form.Item
             label='确认密码'
             name='confirm_password'
             rules={rules.confirm_password}
           >
-            <Input placeholder='请确认密码' />
+            <Input.Password placeholder='请确认密码' />
           </Form.Item>
-
+          <Form.Item label='国籍' name='nation' rules={rules.nation}>
+            <Select placeholder='请选择国籍'>
+              <Select.Option value='china'>中国</Select.Option>
+              <Select.Option value='usa'>美国</Select.Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name='hobby'
+            label='爱好'
+            rules={rules.hobby}
+            initialValue={[]}
+          >
+            <Checkbox.Group>
+              {hobbyList.map((item) => (
+                <Checkbox key={item.value} value={item.value}>
+                  {item.txt}
+                </Checkbox>
+              ))}
+            </Checkbox.Group>
+          </Form.Item>
           <Form.Item
             name='agree'
             valuePropName='checked'
