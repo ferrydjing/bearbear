@@ -34,6 +34,9 @@ const Aside = (props) => {
   const menuClick = ({ key }) => {
     dispatch(actionCreaters.setSelectedKeys(key))
     dispatch(actionCreaters.setOenKeys(key))
+    if (isMobile) {
+      dispatch(actionCreaters.setCollapse(false))
+    }
   }
 
   const onOpenChange = (key) => {
