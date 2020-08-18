@@ -76,4 +76,7 @@ html, body, div, span, applet, object, iframe,
         line-height: 32px;
         }
     }
+    :root {
+        --animate-duration: 0.5s;
+    }
 `
