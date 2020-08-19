@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Form, Button, Input, notification, Checkbox } from 'antd'
 import { log } from '@ferrydjing/utils'
 import { UserAgreement } from '_c'
@@ -7,7 +7,8 @@ import * as Styled from './style'
 
 const Register = (props) => {
   const [visible, setVisible] = useState(false)
-  const { setLoading, history } = props
+  const { setLoading } = props
+  const history = useHistory()
   const [form] = Form.useForm()
   const [status, setStatus] = useState(0)
 
@@ -121,4 +122,4 @@ const Register = (props) => {
   )
 }
 
-export default withRouter(Register)
+export default Register

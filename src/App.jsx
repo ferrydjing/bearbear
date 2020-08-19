@@ -85,7 +85,7 @@ const App = () => {
     <Suspense fallback={<Loading />}>
       <Router>
         <Switch>
-          <Route path='/' exact render={() => <Redirect to='/index' />} />
+          <Route path='/' exact render={() => <Redirect to='/login' />} />
           <Route path='/login' component={Login} />
           <Route path='/404' component={NotFound} />
           <Route component={DefaultLayout} />

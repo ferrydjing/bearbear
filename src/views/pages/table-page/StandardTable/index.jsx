@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import * as Styled from './style'
-import { Button, Input, Modal } from 'antd'
+import { Button, Input, Modal, Space } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { FerryTable } from '_c'
 import TableForm from './components/TableForm'
@@ -17,6 +17,19 @@ const columns = [
   {
     title: '地址',
     dataIndex: 'address'
+  },
+  {
+    title: '操作',
+    render: (text, record) => {
+      return (
+        <Space>
+          <Button size='small' type='primary'>
+            修改
+          </Button>
+          <Button size='small'>删除</Button>
+        </Space>
+      )
+    }
   }
 ]
 

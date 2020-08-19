@@ -127,8 +127,11 @@ const FerryTable = (props, ref) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectTotalKeys])
 
+  const delRow = (row) => {}
+
   useImperativeHandle(ref, () => ({
-    refresh: fetchData
+    refresh: fetchData,
+    del: delRow
   }))
 
   return (

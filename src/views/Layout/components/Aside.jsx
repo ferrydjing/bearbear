@@ -1,13 +1,13 @@
 import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { Menu } from 'antd'
-import { withRouter } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { AsideWrap, LogoWrap, DrawerWrap } from '../styled'
 import { Icon } from '@/components'
 import * as actionCreaters from '../store/actionCreaters'
 
 const Aside = (props) => {
-  const { location } = props
+  const location = useLocation()
   const { collapse, menu, openKeys, selectedKeys, isMobile } = useSelector(
     (state) => {
       return {
@@ -84,4 +84,4 @@ const Aside = (props) => {
   )
 }
 
-export default withRouter(memo(Aside))
+export default memo(Aside)

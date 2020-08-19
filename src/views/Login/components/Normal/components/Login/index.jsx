@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Form, Button, Input, notification, message } from 'antd'
 import { log } from '@ferrydjing/utils'
 import * as Styled from './style'
 
 const Login = (props) => {
-  const { setLoading, history } = props
+  const { setLoading } = props
+  const history = useHistory()
   const [form] = Form.useForm()
   const [status, setStatus] = useState(0)
 
@@ -86,4 +87,4 @@ const Login = (props) => {
   )
 }
 
-export default withRouter(Login)
+export default Login

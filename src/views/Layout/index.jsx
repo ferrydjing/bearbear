@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { Layout, BackTop } from 'antd'
 import { Aside, Content } from './components'
@@ -8,7 +8,8 @@ import routes from '@/routers'
 import * as baseActionCreaters from '@/store/base/actionCreaters'
 
 const LayoutContainer = (props) => {
-  const { location } = props
+  // const { location } = props
+  const location = useLocation()
   const dispatch = useDispatch()
   let routesNew = []
   routes.forEach((item) => {
@@ -62,4 +63,4 @@ const LayoutContainer = (props) => {
   )
 }
 
-export default withRouter(memo(LayoutContainer))
+export default memo(LayoutContainer)

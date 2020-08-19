@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
+import { useLocation, useHistory, Link } from 'react-router-dom'
 import { Breadcrumb } from 'antd'
 import fp from 'lodash/fp'
 import dayjs from 'dayjs'
@@ -23,7 +23,9 @@ import {
 import * as actionCreaters from '../store/actionCreaters'
 
 const Content = (props) => {
-  const { location, history } = props
+  // const { location, history } = props
+  const location = useLocation()
+  const history = useHistory()
   const { isMobile, collapse, menu } = useSelector(
     (state) => ({
       isMobile: state.getIn(['base', 'isMobile']),
@@ -118,4 +120,4 @@ const Content = (props) => {
   )
 }
 
-export default withRouter(memo(Content))
+export default memo(Content)
