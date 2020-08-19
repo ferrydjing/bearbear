@@ -1,6 +1,7 @@
 import React, { memo, useEffect } from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { Layout, BackTop } from 'antd'
 import { Aside, Content } from './components'
 import routes from '@/routers'
@@ -33,19 +34,29 @@ const LayoutContainer = (props) => {
       <BackTop />
       <Aside style={{ display: isMobile ? 'none' : 'block' }}></Aside>
       <Content>
-        <Switch>
-          {routesNew.map((Item) => {
-            return (
-              <Route
-                key={Item.path}
-                path={Item.path}
-                exact={Item.exact}
-                render={(props) => <Item.component {...props} />}
-              ></Route>
-            )
-          })}
-          <Redirect to='/404' {...props} />
-        </Switch>
+        <TransitionGroup className={'router-wrapper'}>
+          <CSSTransition
+            key={location.pathname}
+            appear={true}
+            classNames={'fade'}
+            timeout={300}
+            unmountOnExit={true}
+          >
+            <Switch location={location}>
+              {routesNew.map((Item) => {
+                return (
+                  <Route
+                    key={Item.path}
+                    path={Item.path}
+                    exact={Item.exact}
+                    render={(props) => <Item.component {...props} />}
+                  ></Route>
+                )
+              })}
+              <Redirect to='/404' {...props} />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
       </Content>
     </Layout>
   )

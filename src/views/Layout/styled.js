@@ -17,19 +17,28 @@ export const ContentWrap = styled(Layout)`
     overflow-x: hidden;
     overflow-y: scroll;
   }
+  .fade-appear,
   .fade-enter {
+    transform: translateX(18px);
     opacity: 0;
   }
+
+  .fade-appear-active,
   .fade-enter-active {
+    transition: all 0.3s ease-out;
+    transform: translateX(0);
     opacity: 1;
-    transition: opacity 0.5s;
   }
+
   .fade-exit {
+    transition: all 0.3s ease-out;
+    transform: translateX(0);
     opacity: 1;
   }
+
   .fade-exit-active {
+    transform: translateX(18px);
     opacity: 0;
-    transition: opacity 0.5s;
   }
 `
 

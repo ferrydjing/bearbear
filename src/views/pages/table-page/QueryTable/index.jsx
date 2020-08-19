@@ -85,7 +85,7 @@ const QueryTable = (props) => {
               type='primary'
               icon={<RedoOutlined />}
               onClick={() => {
-                tableRef.current.refresh()
+                tableRef && tableRef.current.refresh()
               }}
             >
               刷新
@@ -116,7 +116,7 @@ const QueryTable = (props) => {
             }}
             onConfirm={() => {
               setVisible(false)
-              tableRef.current.refresh()
+              tableRef && tableRef.current.refresh()
             }}
           ></TableForm>
         ) : null}
