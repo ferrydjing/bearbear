@@ -108,7 +108,7 @@ const routes = [
         exact: true,
         name: 'StepForm',
         component: StepForm,
-        title: '分布表单',
+        title: '分步表单',
         icon: ''
       }
     ]
