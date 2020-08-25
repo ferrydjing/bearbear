@@ -53,7 +53,8 @@ export const setMenuTabsPanes = (key) => {
         panes
       )
       dispatch(setTabsPanes(newPanes))
-      store.session.set('_tabsViews', newPanes)
+      console.log(newPanes)
+      store.session.set('_tabsViews', newPanes, true)
       dispatch(setMenuActive(key))
     }
   }

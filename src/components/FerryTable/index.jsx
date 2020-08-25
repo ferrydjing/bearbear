@@ -157,6 +157,11 @@ const FerryTable = (props, ref) => {
         dataSource={data.list}
         rowKey={(row) => row.id || row._id || row.key}
         onChange={onTableChange}
+        scroll={{
+          x: true,
+          y: true,
+          scrollToFirstRowOnChange: true
+        }}
         pagination={{
           showSizeChanger: true,
           showQuickJumper: true,

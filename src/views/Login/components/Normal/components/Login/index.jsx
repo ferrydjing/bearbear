@@ -57,7 +57,7 @@ const Login = (props) => {
           <Input size='large' placeholder='用户名' />
         </Form.Item>
         <Form.Item name='password' rules={rules.password}>
-          <Input size='large' placeholder='密码' />
+          <Input.Password size='large' placeholder='密码' />
         </Form.Item>
         <div style={{ textAlign: 'right' }}>
           <Button

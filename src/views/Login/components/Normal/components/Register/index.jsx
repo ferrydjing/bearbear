@@ -80,10 +80,10 @@ const Register = (props) => {
           <Input size='large' placeholder='请输入用户名' />
         </Form.Item>
         <Form.Item name='password' rules={rules.password}>
-          <Input size='large' type='password' placeholder='请输入密码' />
+          <Input.Password size='large' placeholder='请输入密码' />
         </Form.Item>
         <Form.Item name='confirm_password' rules={rules.confirm_password}>
-          <Input size='large' type='password' placeholder='请确认密码' />
+          <Input.Password size='large' placeholder='请确认密码' />
         </Form.Item>
         <Form.Item name='code' rules={rules.code}>
           <Input size='large' placeholder='请输入邀请码' />

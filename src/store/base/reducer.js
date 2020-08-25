@@ -9,8 +9,8 @@ let panes = [
   }
 ]
 try {
-  if (store.session.get('_tabsViews')) {
-    panes = store.session.get('_tabsViews')
+  if (store.session.get('_tabsViews', true)) {
+    panes = store.session.get('_tabsViews', true)
   }
 } catch (error) {
   log(error)
