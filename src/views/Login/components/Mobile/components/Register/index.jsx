@@ -4,6 +4,7 @@ import { log } from '@ferrydjing/utils'
 import { Form, Button, Input, notification, Checkbox } from 'antd'
 import { UserAgreement } from '_c'
 import styled from 'styled-components'
+import useRegister from '../../../../hook/useRegister'
 
 const rem = (px) => {
   return px / 100 + 'rem'
@@ -16,73 +17,7 @@ const Wrap = styled.div`
 `
 
 const RegisterMobile = (props) => {
-  const { setType, setLoading } = props
-  const [visible, setVisible] = useState(false)
-  const history = useHistory()
-  const [form] = Form.useForm()
-  const [status, setStatus] = useState(0)
-
-  const save = async (values) => {
-    setLoading(true)
-    log(values)
-    setTimeout(() => {
-      setLoading(false)
-      setStatus(1)
-    }, 2000)
-  }
-
-  useEffect(() => {
-    if (status === 1) {
-      setStatus(0)
-      notification.success({ message: '注册成功' })
-      history.push('/index')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status])
-
-  const rules = {
-    username: [
-      {
-        required: true,
-        message: '必填'
-      },
-      {
-        pattern: /^[A-Za-z0-9~!@#$%^&*_.-]{2,20}$/,
-        message: '请输入2-20位英文数字或特殊字符'
-      }
-    ],
-    password: [
-      {
-        required: true,
-        message: '必填'
-      },
-      {
-        pattern: /^[A-Za-z0-9~!@#$%^&*_.-]{6,20}$/,
-        message: '请输入6-20位英文数字或特殊字符'
-      }
-    ],
-    confirm_password: [
-      {
-        required: true,
-        message: '必填'
-      },
-      ({ getFieldValue }) => ({
-        validator(rule, value) {
-          if (!value || getFieldValue('password') === value) {
-            return Promise.resolve()
-          }
-
-          return Promise.reject('两次输入的密码不一致')
-        }
-      })
-    ],
-    agree: [
-      {
-        required: true,
-        message: '请同意用户协议'
-      }
-    ]
-  }
+  const { save, rules, form, visible, setVisible, setType } = useRegister(props)
 
   return (
     <Wrap>

@@ -13,8 +13,7 @@ const Wrap = styled.div`
 `
 
 const LoginMobile = (props) => {
-  const { setType } = props
-  const { save, rules, form } = useLogin(props)
+  const { save, rules, form, setType } = useLogin(props)
 
   return (
     <Wrap>

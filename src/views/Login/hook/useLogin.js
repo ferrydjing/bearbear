@@ -4,7 +4,7 @@ import { message, notification, Form } from 'antd'
 import { useHistory } from 'react-router-dom'
 
 const useLogin = (props) => {
-  const { setLoading } = props
+  const { setLoading, setType } = props
   const history = useHistory()
   const [form] = Form.useForm()
   const [status, setStatus] = useState(0)
@@ -54,7 +54,7 @@ const useLogin = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status])
 
-  return { save, rules, form }
+  return { save, rules, form, setType }
 }
 
 export default useLogin
