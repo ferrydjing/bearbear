@@ -1,55 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Form, Button, Input, notification, message } from 'antd'
-import { log } from '@ferrydjing/utils'
+import React from 'react'
+import { Form, Button, Input, message } from 'antd'
 import * as Styled from './style'
+import useLogin from '../../../../hook/useLogin'
 
 const Login = (props) => {
-  const { setLoading } = props
-  const history = useHistory()
-  const [form] = Form.useForm()
-  const [status, setStatus] = useState(0)
+  const { save, rules, form } = useLogin(props)
 
-  const save = async (values) => {
-    setLoading(true)
-    log(values)
-    setTimeout(() => {
-      setLoading(false)
-      setStatus(1)
-    }, 2000)
-  }
-
-  useEffect(() => {
-    if (status === 1) {
-      setStatus(0)
-      notification.success({ message: '登录成功' })
-      history.push('/index')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status])
-
-  const rules = {
-    username: [
-      {
-        required: true,
-        message: '必填'
-      },
-      {
-        pattern: /^[A-Za-z0-9~!@#$%^&*_.-]{2,20}$/,
-        message: '请输入2-20位英文数字或特殊字符'
-      }
-    ],
-    password: [
-      {
-        required: true,
-        message: '必填'
-      },
-      {
-        pattern: /^[A-Za-z0-9~!@#$%^&*_.-]{6,20}$/,
-        message: '请输入6-20位英文数字或特殊字符'
-      }
-    ]
-  }
   return (
     <Styled.Wrap>
       <Form form={form} onFinish={save}>

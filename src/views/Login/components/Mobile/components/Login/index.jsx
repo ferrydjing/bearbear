@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import React from 'react'
 import styled from 'styled-components'
-import { log } from '@ferrydjing/utils'
-import { Form, Button, Input, notification, message } from 'antd'
-
+import { Form, Button, Input, message } from 'antd'
+import useLogin from '../../../../hook/useLogin'
 const rem = (px) => {
   return px / 100 + 'rem'
 }
@@ -15,51 +13,8 @@ const Wrap = styled.div`
 `
 
 const LoginMobile = (props) => {
-  const { setType, setLoading } = props
-  const history = useHistory()
-  const [form] = Form.useForm()
-  const [status, setStatus] = useState(0)
-
-  const save = async (values) => {
-    setLoading(true)
-    log(values)
-    setTimeout(() => {
-      setLoading(false)
-      setStatus(1)
-    }, 2000)
-  }
-
-  useEffect(() => {
-    if (status === 1) {
-      setStatus(0)
-      notification.success({ message: '登录成功' })
-      history.push('/index')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status])
-
-  const rules = {
-    username: [
-      {
-        required: true,
-        message: '必填'
-      },
-      {
-        pattern: /^[A-Za-z0-9~!@#$%^&*_.-]{2,20}$/,
-        message: '请输入2-20位英文数字或特殊字符'
-      }
-    ],
-    password: [
-      {
-        required: true,
-        message: '必填'
-      },
-      {
-        pattern: /^[A-Za-z0-9~!@#$%^&*_.-]{6,20}$/,
-        message: '请输入6-20位英文数字或特殊字符'
-      }
-    ]
-  }
+  const { setType } = props
+  const { save, rules, form } = useLogin(props)
 
   return (
     <Wrap>
@@ -91,7 +46,12 @@ const LoginMobile = (props) => {
           rules={rules.password}
           className='mobile-item'
         >
-          <Input allowClear size='large' bordered={false} placeholder='密码' />
+          <Input.Password
+            allowClear
+            size='large'
+            bordered={false}
+            placeholder='密码'
+          />
         </Form.Item>
 
         <Form.Item>
