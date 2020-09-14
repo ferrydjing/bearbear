@@ -13,7 +13,7 @@ const Wrap = styled.div`
 `
 
 const LoginMobile = (props) => {
-  const { save, rules, form, setType } = useLogin(props)
+  const { save, rules, form, setType, defaultVal } = useLogin(props)
 
   return (
     <Wrap>
@@ -32,6 +32,7 @@ const LoginMobile = (props) => {
           name='username'
           rules={rules.username}
           className='mobile-item'
+          initialValue={defaultVal.username}
         >
           <Input
             allowClear
@@ -44,6 +45,7 @@ const LoginMobile = (props) => {
           name='password'
           rules={rules.password}
           className='mobile-item'
+          initialValue={defaultVal.password}
         >
           <Input.Password
             allowClear

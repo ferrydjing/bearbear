@@ -4,15 +4,23 @@ import * as Styled from './style'
 import useLogin from '../../../../hook/useLogin'
 
 const Login = (props) => {
-  const { save, rules, form } = useLogin(props)
+  const { save, rules, form, defaultVal } = useLogin(props)
 
   return (
     <Styled.Wrap>
       <Form form={form} onFinish={save}>
-        <Form.Item name='username' rules={rules.username}>
+        <Form.Item
+          name='username'
+          rules={rules.username}
+          initialValue={defaultVal.username}
+        >
           <Input size='large' placeholder='用户名' />
         </Form.Item>
-        <Form.Item name='password' rules={rules.password}>
+        <Form.Item
+          name='password'
+          rules={rules.password}
+          initialValue={defaultVal.password}
+        >
           <Input.Password size='large' placeholder='密码' />
         </Form.Item>
         <div style={{ textAlign: 'right' }}>

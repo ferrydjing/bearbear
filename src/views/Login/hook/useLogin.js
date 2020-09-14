@@ -8,6 +8,10 @@ const useLogin = (props) => {
   const history = useHistory()
   const [form] = Form.useForm()
   const [status, setStatus] = useState(0)
+  const [defaultVal] = useState({
+    username: 'admin',
+    password: '123456'
+  })
   const [rules] = useState({
     username: [
       {
@@ -54,7 +58,7 @@ const useLogin = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status])
 
-  return { save, rules, form, setType }
+  return { save, rules, form, setType, defaultVal }
 }
 
 export default useLogin
