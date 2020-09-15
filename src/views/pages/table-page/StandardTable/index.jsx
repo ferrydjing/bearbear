@@ -5,38 +5,51 @@ import { PlusOutlined } from '@ant-design/icons'
 import { FerryTable } from '_c'
 import TableForm from './components/TableForm'
 
-const columns = [
-  {
-    title: '姓名',
-    dataIndex: 'name'
-  },
-  {
-    title: '年龄',
-    dataIndex: 'age'
-  },
-  {
-    title: '地址',
-    dataIndex: 'address'
-  },
-  {
-    title: '操作',
-    render: (text, record) => {
-      return (
-        <Space>
-          <Button size='small' type='primary'>
-            修改
-          </Button>
-          <Button size='small'>删除</Button>
-        </Space>
-      )
-    }
-  }
-]
-
 const StandardTable = (props) => {
   const tableRef = useRef(null)
-  const [title] = useState('新增')
+  const [title, setTitle] = useState('新增')
   const [visible, setVisible] = useState(false)
+  const [id, setId] = useState(null)
+  const columns = [
+    {
+      title: '姓名',
+      dataIndex: 'name'
+    },
+    {
+      title: '年龄',
+      dataIndex: 'age'
+    },
+    {
+      title: '地址',
+      dataIndex: 'address'
+    },
+    {
+      title: '操作',
+      render: (text, record) => {
+        return (
+          <Space>
+            <Button
+              size='small'
+              type='primary'
+              onClick={() => {
+                modifyHandle(record)
+              }}
+            >
+              修改
+            </Button>
+            <Button size='small'>删除</Button>
+          </Space>
+        )
+      }
+    }
+  ]
+
+  const modifyHandle = (data) => {
+    setId(data.id)
+    setTitle('修改')
+    setVisible(true)
+  }
+
   return (
     <Styled.Wrap>
       <Styled.Content>
@@ -52,6 +65,8 @@ const StandardTable = (props) => {
           icon={<PlusOutlined />}
           className='add'
           onClick={() => {
+            setId(null)
+            setTitle('新增')
             setVisible(true)
           }}
         >
@@ -74,6 +89,7 @@ const StandardTable = (props) => {
       >
         {visible ? (
           <TableForm
+            id={id}
             onCancel={() => {
               setVisible(false)
             }}
