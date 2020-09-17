@@ -111,14 +111,9 @@ export default function (options) {
             }
           }
           if (text) {
-            // if (store.state.basic.isMobile) {
-            //   Toast(text)
-            // } else {
             Message.destroy()
             Message.error(text)
-            // }
           }
-          // Dialog({ type: 'error', text });
           reject(text)
         }
       }
