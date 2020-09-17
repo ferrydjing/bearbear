@@ -10,7 +10,7 @@ export default function (options) {
   return new Promise((resolve, reject) => {
     let createOption = {
       baseURL: baseUrl,
-      timeout: 90000,
+      timeout: 10e3,
       headers: {
         'Content-Type': 'application/json'
         // 'Content-Type': 'application/x-www-form-urlencoded'
