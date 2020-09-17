@@ -2,43 +2,9 @@ import React, { memo, Suspense, useEffect } from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import fp from 'lodash/fp'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-import { Skeleton } from 'antd'
 import { DefaultLayout, NotFound, Login } from './routers'
 import * as actionCreaters from './store/base/actionCreaters'
-
-const { Button } = Skeleton
-
-const Loading = () => {
-  const { isMobile } = useSelector(
-    (state) => ({
-      isMobile: state.getIn(['base', 'isMobile'])
-    }),
-    shallowEqual
-  )
-  useEffect(() => {
-    NProgress.start()
-    return () => {
-      NProgress.done()
-    }
-  }, [])
-  return (
-    <div style={{ display: 'flex' }}>
-      {isMobile ? null : (
-        <Button
-          style={{ height: '100vh', width: 208, marginRigt: 20 }}
-          active
-        ></Button>
-      )}
-      <Skeleton
-        active
-        paragraph={{ rows: 10 }}
-        className='loading-skeleton'
-      ></Skeleton>
-    </div>
-  )
-}
+import { PageLoading } from '_c'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -82,7 +48,7 @@ const App = () => {
   }, [screenHeight, screenWidth, isMobile])
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<PageLoading />}>
       <Router>
         <Switch>
           <Route path='/' exact render={() => <Redirect to='/login' />} />

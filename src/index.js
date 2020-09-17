@@ -10,7 +10,7 @@ import App from './App'
 import store from './store'
 
 const renderElement = document.getElementById('root')
-const AppRender = () => {
+const RenderNode = () => {
   return (
     <Provider store={store}>
       <>
@@ -21,4 +21,4 @@ const AppRender = () => {
   )
 }
 
-ReactDOM.render(<AppRender />, renderElement)
+ReactDOM.render(<RenderNode />, renderElement)
