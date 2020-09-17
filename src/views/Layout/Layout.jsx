@@ -11,7 +11,7 @@ import { PageLoading } from '_c'
 const RouteWrap = (WrapComponent, props) => {
   return (
     <div className='page'>
-      <Suspense fallback={<PageLoading />}>
+      <Suspense fallback={<PageLoading hideLeft />}>
         <WrapComponent {...props} />
       </Suspense>
     </div>

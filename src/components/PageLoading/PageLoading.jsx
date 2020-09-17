@@ -5,7 +5,8 @@ import 'nprogress/nprogress.css'
 import { Skeleton } from 'antd'
 const { Button } = Skeleton
 
-const Loading = () => {
+const Loading = (props) => {
+  const { hideLeft = false } = props
   const { isMobile } = useSelector(
     (state) => ({
       isMobile: state.getIn(['base', 'isMobile'])
@@ -20,7 +21,7 @@ const Loading = () => {
   }, [])
   return (
     <div style={{ display: 'flex' }}>
-      {isMobile ? null : (
+      {isMobile || hideLeft ? null : (
         <Button
           style={{ height: '100vh', width: 208, marginRigt: 20 }}
           active
