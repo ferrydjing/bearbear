@@ -9,6 +9,7 @@ export const IconItem = styled.div`
   border-radius: 4px;
   h2 {
     font-size: 16px;
+    margin-bottom: 12px;
   }
   ul {
     font-size: 0;

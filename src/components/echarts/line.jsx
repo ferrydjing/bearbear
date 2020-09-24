@@ -5,8 +5,8 @@ const Line = (props) => {
   const commonOption = {
     grid: {
       top: '2%',
-      left: 80,
-      right: 50,
+      left: 40,
+      right: 30,
       bottom: 30
     },
     xAxis: {

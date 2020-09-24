@@ -22,6 +22,7 @@ const dataDeafaul = []
 for (let i = 0; i < 46; i++) {
   dataDeafaul.push({
     key: i,
+    id: 'de' + i,
     name: `Edward King ${i}`,
     age: 32,
     address: `London, Park Lane no. ${i}`

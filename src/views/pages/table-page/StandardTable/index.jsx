@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import * as Styled from './style'
+import { log } from '@ferrydjing/utils'
 import { Button, Input, Modal, Space } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { FerryTable } from '_c'
@@ -45,6 +46,7 @@ const StandardTable = (props) => {
   ]
 
   const modifyHandle = (data) => {
+    log(data)
     setId(data.id)
     setTitle('修改')
     setVisible(true)
